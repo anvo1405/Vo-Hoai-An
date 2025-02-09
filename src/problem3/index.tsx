@@ -49,7 +49,9 @@ interface WalletBalance {
               return -1;
             } else if (rightPriority > leftPriority) {
               return 1;
-            }
+            } else if (leftPriority === rightPriority){
+              return 0;
+            } else return -2;
       });
     }, [balances]);
   
@@ -65,7 +67,7 @@ interface WalletBalance {
       return (
         <WalletRow 
           className={classes.row}
-          key={index}
+          key={balance.currency}
           amount={balance.amount}
           usdValue={usdValue}
           formattedAmount={balance.formatted}
